@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "Teams Live Caption Sidebar",
+  "version": "1.0",
+  "description": "Adds a sidebar with live captions and translate for Microsoft Teams meetings",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "http://localhost:5000/*",
+    "https://localhost:5000/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+    
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://teams.microsoft.com/*", "https://teams.live.com/*","https://teams.live.com/v2/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src 'self' http://localhost:5000 https://localhost:5000"
+  }
+}
